@@ -15,7 +15,7 @@ class InventoryManager implements InventoryInterface
 
   private $stockThreshhold = 10;
 
-  public function getItemStock (int $itemId, int $quantity): void
+  public function decreaseItemStock (int $itemId, int $quantity): void
   {
     if ($this->items[$itemId])
     {
