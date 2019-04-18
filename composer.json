@@ -1,0 +1,15 @@
+{
+    "name": "noodle-code/kounta-code-exam",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "7.*"
+    },
+    "license": "ISC",
+    "authors": [
+        {
+            "name": "noodle-code",
+            "email": "aldrinthomaslab@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
