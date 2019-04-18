@@ -37,16 +37,6 @@ class InventoryManager implements InventoryInterface
     }
   }
 
-  public function isItemUnderStock (int $itemId): boolean
-  {
-    if ($this->items[$itemId] && $this->items[$itemId] < $this->stockThreshhold)
-    {
-      return true;
-    }
-
-    return false;
-  }
-
   public function addItemStock (int $itemId, int $quantity): void
   {
     if ($this->items[$itemId])
