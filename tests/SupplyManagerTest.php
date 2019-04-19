@@ -6,7 +6,7 @@ use Kounta\Modules\SupplyManager;
 use Kounta\Constants\Products;
 use Kounta\Constants\Days;
 
-class SupplyManagerTest extends TestCaese
+class SupplyManagerTest extends TestCase
 {
   private $supplyManager;
 
@@ -57,7 +57,7 @@ class SupplyManagerTest extends TestCaese
   public function testShouldRejectAnotherPurchaseOfBrowniesOnTuesday ()
   {
     $this->assertFalse($this->supplyManager->setPurchaseFor(Products::BROWNIE, Days::TUESDAY));
-    $this->assertEquals(20, $this->supplyManager->getPurchasePendingTotal(Products::BROWNIE);
+    $this->assertEquals(20, $this->supplyManager->getPurchasePendingTotal(Products::BROWNIE));
   }
 
   public function testShouldReceiveMondayPurchasesOnWednesday ()
