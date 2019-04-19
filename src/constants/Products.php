@@ -1,5 +1,7 @@
 <?php
 
+namespace Kounta\Constants;
+
 class Products
 {
     public const BROWNIE = 1;

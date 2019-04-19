@@ -1,6 +1,9 @@
 <?php
-include_once('./../interfaces/ProductSoldInterface.php');
-include_once('./../interfaces/OrderProcessorInterface.php');
+
+namespace Kounta\Modules;
+
+use Kounta\Interfaces\OrderProcessorInterface;
+use Kounta\Interfaces\ProductSoldInterface;
 
 class OrderManager implements OrderProcessorInterface, ProductSoldInterface
 {
@@ -11,6 +14,6 @@ class OrderManager implements OrderProcessorInterface, ProductSoldInterface
 
   public function getSoldTotal(int $productId): int
   {
-    
+
   }
 }
