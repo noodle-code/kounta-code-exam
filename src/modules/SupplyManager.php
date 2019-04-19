@@ -6,6 +6,9 @@ use Kounta\Interfaces\ProductPurchasedInterface;
 
 class SupplyManager implements ProductPurchasedInterface
 {
+  private $pendingPurchases = [];
+
+
   public function getPurchasedReceivedTotal(int $productId): int
   {
 
@@ -14,5 +17,21 @@ class SupplyManager implements ProductPurchasedInterface
   public function getPurchasedPendingTotal(int $productId): int
   {
 
+  }
+
+  public function setPurchaseFor (int $itemId, int $orderDay): void
+  {
+    if (empty($this->pendingPurchases[$itemId]))
+    {
+      $this->pendingPurchases[$itemId] = [
+        "purchase_day" => $orderDay,
+        "quantity"     => 20,
+        "receive_day"  => $orderDay + 1;
+      ];
+
+      return true;
+    }
+
+    return false;
   }
 }
