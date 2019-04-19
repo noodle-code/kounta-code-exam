@@ -2,7 +2,7 @@
 
 namespace Kounta\Modules;
 
-include_once('./../interfaces/ProductPurchasedInterface.php');
+use Kounta\Interfaces\ProductPurchasedInterface;
 
 class SupplyManager implements ProductPurchasedInterface
 {

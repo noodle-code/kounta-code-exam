@@ -2,7 +2,7 @@
 
 namespace Kounta\Modules;
 
-includes('./../interfaces/InventoryInterface.php');
+use Kounta\Interfaces\InventoryInterface;
 
 class InventoryManager implements InventoryInterface
 {
