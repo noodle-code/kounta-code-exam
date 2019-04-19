@@ -26,7 +26,7 @@ class SupplyManager implements ProductPurchasedInterface
       $this->pendingPurchases[$itemId] = [
         "purchase_day" => $orderDay,
         "quantity"     => 20,
-        "receive_day"  => $orderDay + 1;
+        "receive_day"  => $orderDay + 2;
       ];
 
       return true;
