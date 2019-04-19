@@ -2,9 +2,9 @@
 
 namespace Kounta\Modules;
 
-use Kounta\Interfaces\ProductPurchasedInterface;
+use Kounta\Interfaces\ProductsPurchasedInterface;
 
-class SupplyManager implements ProductPurchasedInterface
+class SupplyManager implements ProductsPurchasedInterface
 {
   private $pendingPurchases = [];
 
