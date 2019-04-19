@@ -8,6 +8,7 @@ class SupplyManager implements ProductPurchasedInterface
 {
   private $pendingPurchases = [];
 
+  private $receivedPurchases = [];
 
   public function getPurchasedReceivedTotal(int $productId): int
   {
