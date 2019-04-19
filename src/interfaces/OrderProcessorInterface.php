@@ -1,5 +1,7 @@
 <?php
 
+namespace Kounta\Interfaces;
+
 interface OrderProcessorInterface
 {
     /**
