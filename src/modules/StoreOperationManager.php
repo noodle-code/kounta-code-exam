@@ -1,5 +1,7 @@
 <?php
 
+namespace Kounta\Modules;
+
 class StoreOperationManager {
   /**
    * List of store operation days.

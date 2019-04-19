@@ -1,5 +1,7 @@
 <?php
 
+namespace Kounta\Modules;
+
 include_once('./../interfaces/ProductPurchasedInterface.php');
 
 class SupplyManager implements ProductPurchasedInterface
