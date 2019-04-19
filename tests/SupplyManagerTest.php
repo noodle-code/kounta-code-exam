@@ -18,27 +18,57 @@ class SupplyManagerTest extends TestCaese
     }
   }
 
-  public function testShouldReceiveOrderOnWednesdayWhenAMondayPurchaseForBrowniesIsDone ()
+  public function testShouldReceiveNoSupplyOnFreshInstance ()
   {
-    $expected = [
-      "purchase_day"  => Days::MONDAY,
-      "quantity"      => 20,
-      "receive_day"   => Days::WEDNESDAY
-    ];
-
-    $this->assertTrue($this->supplyManager->setPurchaseFor(Products::BROWNIE, Days::MONDAY));
-    $this->assertEquals($expected, $this->supplyManager->getPurchaseFor(Products::BROWNIE));
+    $receivedSupply = [];
+    $this->assertEqual($receivedSupply, $this->supplyManager->receivePurchase(Days::MONDAY));
   }
 
-  public function testShouldRejectAnotherPurchaseOfBrowniesOnTueday ()
+  public function testShouldAddPurchaseForBrowniesOnMondayDueOnWednesday ()
   {
-    $expected = [
-      "purchase_day"  => Days::MONDAY,
-      "quantity"      => 20,
-      "receive_day"   => Days::WEDNESDAY
+    $this->assertTrue($this->supplyManager->setPurchaseFor(Products::BROWNIE, Days::MONDAY));
+    $this->assertEquals(20, $this->supplyManager->getPurchasePendingTotal(Products::BROWNIE));
+  }
+
+  public function testShouldAddPurchaseForCroissantsOnMondayDueOnWednesday ()
+  {
+    $this->assertTrue($this->supplyManager->setPurchaseFor(Products::CROISSANT, Days::MONDAY));
+    $this->assertEquals(20, $this->supplyManager->getPurchasePendingTotal(Products::CROISSANT));
+  }
+
+  public function testShouldGetAllPendingPurchases ()
+  {
+    $pendingPurchases = [
+      1 => [
+        "purchase_day"  => Days::MONDAY,
+        "quantity"      => 20,
+        "receive_day"   => Days::WEDNESDAY
+      ],
+      4 => [
+        "purchase_day"  => Days::MONDAY,
+        "quantity"      => 20,
+        "receive_day"   => Days::WEDNESDAY
+      ]
     ];
 
+    $this->assertEquals($pendingPurchases, $this->supplyManager->getAllPending(Products::CROISSANT));
+  }
+
+  public function testShouldRejectAnotherPurchaseOfBrowniesOnTuesday ()
+  {
     $this->assertFalse($this->supplyManager->setPurchaseFor(Products::BROWNIE, Days::TUESDAY));
-    $this->assertEquals($expected, $this->supplyManager->getPurchaseFor(Products::BROWNIE));
+    $this->assertEquals(20, $this->supplyManager->getPurchasePendingTotal(Products::BROWNIE);
+  }
+
+  public function testShouldReceiveMondayPurchasesOnWednesday ()
+  {
+    $expectedReceive = [
+      1 => 20,
+      4 => 20
+    ];
+
+    $this->assertEquals($expectedReceive, $this->supplyManager->receivePurchases(Days::WEDNESDAY));
+    $this->assertEquals($expectedReceive[Products::BROWNIE], $this->supplyManager->getPurchasedReceivedTotal(Products::BROWNIE));
+    $this->assertEquals($expectedReceive[Products::CROISSANT], $this->supplyManager->getPurchasedReceivedTotal(Products::CROISSANT));
   }
 }
