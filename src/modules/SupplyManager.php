@@ -31,10 +31,7 @@ class SupplyManager implements ProductsPurchasedInterface
 
     if ($this->pendingPurchases[$productId])
     {
-      foreach($this->pendingPurchases[$productId] as $itemReceiveLog)
-      {
-        $total += $itemReceiveLog['quantity'];
-      }
+      $total = $this->pendingPurchases[$productId]['quantity'];
     }
 
     return $total;
@@ -65,10 +62,15 @@ class SupplyManager implements ProductsPurchasedInterface
       if ($order['receive_day'] === $dayId)
       {
         $receive[$item] = $order['quantity'];
-        $receivedPurchases[$item][] = $order;
+        $this->receivedPurchases[$item][] = $order;
       }
     }
 
     return $receive;
+  }
+
+  public function getAllPending ()
+  {
+    return $this->pendingPurchases;
   }
 }
