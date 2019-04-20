@@ -12,15 +12,35 @@ class SupplyManager implements ProductsPurchasedInterface
 
   public function getPurchasedReceivedTotal(int $productId): int
   {
+    $total = 0;
 
+    if ($this->receivedPurchases[$productId])
+    {
+      foreach($this->receivedPurchases[$productId] as $itemReceiveLog)
+      {
+        $total += $itemReceiveLog['quantity'];
+      }
+    }
+
+    return $total;
   }
 
   public function getPurchasedPendingTotal(int $productId): int
   {
+    $total = 0;
 
+    if ($this->pendingPurchases[$productId])
+    {
+      foreach($this->pendingPurchases[$productId] as $itemReceiveLog)
+      {
+        $total += $itemReceiveLog['quantity'];
+      }
+    }
+
+    return $total;
   }
 
-  public function setPurchaseFor (int $itemId, int $orderDay): boolean
+  public function setPurchaseFor (int $itemId, int $orderDay): bool
   {
     if (empty($this->pendingPurchases[$itemId]))
     {
