@@ -3,26 +3,6 @@
 namespace Kounta\Modules;
 
 class StoreOperationManager {
-  /**
-   * List of store operation days.
-   * @var array
-   */
-  private $weekDays = [
-    "sun",
-    "mon",
-    "tue",
-    "wed",
-    "thu",
-    "fri",
-    "sat"
-  ];
-
-  /**
-   * Indicates day index on when should the business
-   * operation should start.
-   * @var integer
-   */
-  private $startDayIndex = 0;
 
   public function __construct ()
   {
