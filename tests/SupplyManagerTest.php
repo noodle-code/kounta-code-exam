@@ -51,7 +51,7 @@ class SupplyManagerTest extends TestCase
       ]
     ];
 
-    $this->assertEquals($pendingPurchases, $this->supplyManager->getAllPending(Products::CROISSANT));
+    $this->assertEquals($pendingPurchases, $this->supplyManager->getAllPending());
   }
 
   public function testShouldRejectAnotherPurchaseOfBrowniesOnTuesday ()
