@@ -23,7 +23,7 @@ class WeekIterator
     $this->setIterationPoint($dayId);
   }
 
-  public function iterateWeek (\Closure $actvity, $dayCountLimit = 0): void
+  public function iterateWeek (\Closure $activity, $dayCountLimit = 0): void
   {
     while ($this->passedDays !== $dayCountLimit)
     {
