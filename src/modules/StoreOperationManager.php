@@ -2,11 +2,33 @@
 
 namespace Kounta\Modules;
 
-class StoreOperationManager {
+use Kounta\Interfaces\StoreProcedureInterface;
 
-  public function __construct ()
+class StoreOperationManager implements StoreProcedureInterface
+{
+  private $weekIterator;
+  private $supplyManager;
+  private $orderManager;
+  private $inventoryManager;
+
+  public function setWeekIterator (WeekIterator $weekIterator): void
   {
-    // Initialize all sub manager classes.
+    $this->weekIterator = $weekIterator;
+  }
+
+  public function setSupplyManager (SupplyManager $supplyManager): void
+  {
+    $this->supplyManager = $supplyManager;
+  }
+
+  public function setOrderManager (OrderManager $orderManager): void
+  {
+    $this->orderManager = $orderManager;
+  }
+
+  public function setInventoryManager (InventoryManager $inventoryManager): void
+  {
+    $this->inventoryManager = $inventoryManager;
   }
 
   /**
@@ -18,17 +40,7 @@ class StoreOperationManager {
    */
   public function startOn (string $day): void
   {
-    $startIndex = array_search($day, $this->weekDays);
 
-    if ($startDay !== false)
-    {
-      $this->startDayIndex = $startIndex;
-    }
-    else
-    {
-      // Print an error message.
-      print_r('Received invalid day value.');
-    }
   }
 
   /**
