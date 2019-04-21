@@ -2,31 +2,33 @@
 
 namespace Kounta\Modules;
 
-class StoreOperationManager {
-  /**
-   * List of store operation days.
-   * @var array
-   */
-  private $weekDays = [
-    "sun",
-    "mon",
-    "tue",
-    "wed",
-    "thu",
-    "fri",
-    "sat"
-  ];
+use Kounta\Interfaces\StoreProcedureInterface;
 
-  /**
-   * Indicates day index on when should the business
-   * operation should start.
-   * @var integer
-   */
-  private $startDayIndex = 0;
+class StoreOperationManager implements StoreProcedureInterface
+{
+  private $weekIterator;
+  private $supplyManager;
+  private $orderManager;
+  private $inventoryManager;
 
-  public function __construct ()
+  public function setWeekIterator (WeekIterator $weekIterator): void
   {
-    // Initialize all sub manager classes.
+    $this->weekIterator = $weekIterator;
+  }
+
+  public function setSupplyManager (SupplyManager $supplyManager): void
+  {
+    $this->supplyManager = $supplyManager;
+  }
+
+  public function setOrderManager (OrderManager $orderManager): void
+  {
+    $this->orderManager = $orderManager;
+  }
+
+  public function setInventoryManager (InventoryManager $inventoryManager): void
+  {
+    $this->inventoryManager = $inventoryManager;
   }
 
   /**
@@ -38,17 +40,7 @@ class StoreOperationManager {
    */
   public function startOn (string $day): void
   {
-    $startIndex = array_search($day, $this->weekDays);
 
-    if ($startDay !== false)
-    {
-      $this->startDayIndex = $startIndex;
-    }
-    else
-    {
-      // Print an error message.
-      print_r('Received invalid day value.');
-    }
   }
 
   /**
@@ -61,18 +53,6 @@ class StoreOperationManager {
 
     // Iterate on week days.
       // Call start Procedures to carry out day to day tasks
-  }
-
-  /**
-   * Carry out store procedures for the day.
-   * @param array $order An array of orders to be fulfilled within the day.
-   * @return void
-   */
-  private function startProcedures (array $order): void
-  {
-    // Receive orders on start of day
-    // Process given order
-    // Check stocks and place order for items with critical stocks
   }
 
   /**
