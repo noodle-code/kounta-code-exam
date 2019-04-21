@@ -56,18 +56,6 @@ class StoreOperationManager implements StoreProcedureInterface
   }
 
   /**
-   * Carry out store procedures for the day.
-   * @param array $order An array of orders to be fulfilled within the day.
-   * @return void
-   */
-  private function startProcedures (array $order): void
-  {
-    // Receive orders on start of day
-    // Process given order
-    // Check stocks and place order for items with critical stocks
-  }
-
-  /**
    * Print a report summary about the stocks and sales.
    */
   private function printOperationReport (): void
