@@ -20,7 +20,7 @@ class WeekIterator
 
   public function __construct (int $dayId = Days::SUNDAY)
   {
-    $this->setIterationPoint(int $dayId);
+    $this->setIterationPoint($dayId);
   }
 
   public function iterateWeek (\Closure $actvity, $dayCountLimit = 0): void
